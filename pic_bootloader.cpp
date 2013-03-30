@@ -187,7 +187,7 @@ size_t PicBootloader::page_size(PicBootloader::MemoryType memory)
 	switch (memory)
 	{
 		case MEM_FLASH:
-			return 2;
+			return 32;
 		case MEM_EEPROM:
 			return 8;
 		case MEM_ID:
@@ -219,7 +219,13 @@ void PicBootloader::erase(string memory, const Parameters &params)
 		command.erase_flash.echo = ++command_id;
 		command.erase_flash.addr_hi = 0x08;
 		command.erase_flash.addr_lo = 0x00;
-		command.erase_flash.size_x64 = 0x0D;
+		command.erase_flash.size_x64 = 0xE0; // 0xE0 * 64 = 3800
+		transaction(&command, &response);
+		// erase 0x4000-0x6000
+		command.erase_flash.echo = ++command_id;
+		command.erase_flash.addr_hi = 0x40;
+		command.erase_flash.addr_lo = 0x00;
+		command.erase_flash.size_x64 = 0x80; // 0x80 * 64 = 2000
 		transaction(&command, &response);
 		close();
 		show_progress(OP_ERASING, type(), memory, OPERATION_DONE);
@@ -381,7 +387,7 @@ void PicBootloader::program(Buffer::Iterator* buffer, string memory, const Param
 			command.write_flash.addr_lo = (unsigned char)(address & 0xFF);
 			command.write_flash.flush = (unsigned char) 0xff;
 			// size must be 8 dividable
-			//eAssert(size % 8 == 0);
+			eAssert(size % 8 == 0);
 			command.write_flash.size8 = size;
 			transaction(&command, &response);
 			show_progress(OP_PROGRAMMING, type(), memory, buffer->progress());
