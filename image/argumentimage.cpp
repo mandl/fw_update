@@ -23,6 +23,7 @@
 #include "argumentimage.h"
 #include "../exception/exception.h"
 //#include "encoder_usage.h"
+#include <stdlib.h>
 
 ArgumentImage::ArgumentImage(const unsigned int  argument, const Parameters &params)
 : _data(NULL), _size(0), _readAddress(0), _params(params)

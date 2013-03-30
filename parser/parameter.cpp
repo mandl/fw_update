@@ -21,6 +21,7 @@
 #include "../osdep/osdep.h"
 
 #include <string>
+#include <stdlib.h>
 #include "parameter.h"
 #include "string_compare.h"
 #include "parser_exceptions.h"

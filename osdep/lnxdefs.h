@@ -25,9 +25,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <stdint.h> 
 
 #include <cstdio>
 #include <iostream>
+#include <cstring>
 
 /* NOTE: Because fopen() do nothing with "t" mode on non-Windows we need to translate CRLF -> LF manually */
 #define NEED_CRLF_TRANSLATION

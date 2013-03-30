@@ -22,6 +22,7 @@
 
 #include "intel_hex_record.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include "../exception/exception.h"
 #include "../dtrace/dtrace.h"
 
