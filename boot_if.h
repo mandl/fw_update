@@ -26,11 +26,11 @@
 * Constants
 *-----------------------------------------------------------------------------
 */
-#define BOOT_CMD_SIZE	64 //!!!18f24j50 change
+#define BOOT_CMD_SIZE	64 //!!!18f2550 change
 #if( defined HID_OUT_EP_SIZE && (HID_OUT_EP_SIZE<BOOT_CMD_SIZE) )
 	#error "HID_OUT and CMD size mismatch: HID_OUT_EP_SIZE<BOOT_CMD_SIZE"
 #endif
-#define BOOT_RSP_SIZE	64 //!!!18f24j50 change
+#define BOOT_RSP_SIZE	64 //!!!18f2550 change
 #if( defined HID_IN_EP_SIZE && (HID_IN_EP_SIZE<BOOT_CMD_SIZE) )
 	#error "HID_IN and CMD size mismatch: HID_IN_EP_SIZE<BOOT_RSP_SIZE"
 #endif

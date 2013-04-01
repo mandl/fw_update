@@ -215,7 +215,7 @@ void PicBootloader::erase(string memory, const Parameters &params)
 	{
 		show_progress(OP_ERASING, type(), memory, 0);
 		open(params);
-		// erase 0x800-0x4000 //!!! 18f24j50 change
+		// erase 0x800-0x4000 //!!! 18f2550 change
 		command.erase_flash.echo = ++command_id;
 		command.erase_flash.addr_hi = 0x08;
 		command.erase_flash.addr_lo = 0x00;
@@ -224,6 +224,12 @@ void PicBootloader::erase(string memory, const Parameters &params)
 		// erase 0x4000-0x6000
 		command.erase_flash.echo = ++command_id;
 		command.erase_flash.addr_hi = 0x40;
+		command.erase_flash.addr_lo = 0x00;
+		command.erase_flash.size_x64 = 0x80; // 0x80 * 64 = 2000
+		transaction(&command, &response);
+		// erase 0x6000-0x8000 - 18f2550 32k
+		command.erase_flash.echo = ++command_id;
+		command.erase_flash.addr_hi = 0x60;
 		command.erase_flash.addr_lo = 0x00;
 		command.erase_flash.size_x64 = 0x80; // 0x80 * 64 = 2000
 		transaction(&command, &response);

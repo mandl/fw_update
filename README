@@ -2,7 +2,7 @@
 ====================
 
 The Diolan USB BootLoader is a simple way to update firmware
-in PIC18F4455 family microcontrollers without programmers such as ICD2.
+in PIC18F2550 family microcontrollers without programmers such as ICD2.
 
 fw_update is PC side counterpart of BootLoader.
 
